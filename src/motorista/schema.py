@@ -1,14 +1,14 @@
-from src.core.base_schema import Base
-
-from pydantic import Field, EmailStr
 from typing import TYPE_CHECKING
+
+from pydantic import EmailStr, Field
+
+from src.core.base_schema import Base
 
 if TYPE_CHECKING:
     from src.core.schemas import TransporteResponse
 
 
 class MotoristaResponse(Base):
-
     nome: str
     cpf: str
     cnh: str
@@ -21,7 +21,6 @@ class MotoristaResponse(Base):
 
 
 class MotoristaCreate(Base):
-
     nome: str = Field(..., min_length=1, max_length=150)
     cpf: str = Field(..., min_length=11, max_length=11)
     cnh: str = Field(..., min_length=1, max_length=20)
@@ -36,7 +35,6 @@ class MotoristaCreate(Base):
 
 
 class MotoristaUpdate(Base):
-
     nome: str | None = Field(None, min_length=1, max_length=150)
     cpf: str | None = Field(None, min_length=11, max_length=11)
     cnh: str | None = Field(None, min_length=1, max_length=20)

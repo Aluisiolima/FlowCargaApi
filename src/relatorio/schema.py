@@ -1,17 +1,16 @@
-from src.core.base_schema import Base
-
-from pydantic import Field
 from datetime import date
 from decimal import Decimal
-
 from typing import TYPE_CHECKING
+
+from pydantic import Field
+
+from src.core.base_schema import Base
 
 if TYPE_CHECKING:
     from src.core.schemas import SupervisorResponse
 
 
 class RelatorioResponse(Base):
-
     supervisor_id: int
 
     titulo: str
@@ -32,7 +31,6 @@ class RelatorioResponse(Base):
 
 
 class RelatorioCreate(Base):
-
     supervisor_id: int = Field(..., gt=0)
 
     titulo: str = Field(..., min_length=1, max_length=200)
@@ -45,7 +43,6 @@ class RelatorioCreate(Base):
 
 
 class RelatorioUpdate(Base):
-
     supervisor_id: int | None = Field(None, gt=0)
 
     titulo: str | None = Field(None, min_length=1, max_length=200)

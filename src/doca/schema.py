@@ -1,17 +1,16 @@
-from src.core.base_schema import Base
-from src.core.types import StatusDoca
+from decimal import Decimal
+from typing import TYPE_CHECKING
 
 from pydantic import Field
-from decimal import Decimal
 
-from typing import TYPE_CHECKING
+from src.core.base_schema import Base
+from src.core.types import StatusDoca
 
 if TYPE_CHECKING:
     from src.core.schemas import AgendamentoResponse
 
 
 class DocaResponse(Base):
-
     numero: str
     descricao: str | None = None
     localizacao: str | None = None
@@ -25,7 +24,6 @@ class DocaResponse(Base):
 
 
 class DocaCreate(Base):
-
     numero: str = Field(..., min_length=1, max_length=20)
     descricao: str | None = Field(None, max_length=255)
     localizacao: str | None = Field(None, max_length=150)
@@ -40,7 +38,6 @@ class DocaCreate(Base):
 
 
 class DocaUpdate(Base):
-
     numero: str | None = Field(None, min_length=1, max_length=20)
     descricao: str | None = Field(None, max_length=255)
     localizacao: str | None = Field(None, max_length=150)

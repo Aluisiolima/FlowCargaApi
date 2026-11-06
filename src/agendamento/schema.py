@@ -1,17 +1,16 @@
+from datetime import date, datetime, time
+from typing import TYPE_CHECKING
+
+from pydantic import Field
+
 from src.core.base_schema import Base
 from src.core.types import StatusAgendamento
 
-from pydantic import Field
-from datetime import date, time, datetime
-
-from typing import TYPE_CHECKING
-
 if TYPE_CHECKING:
-    from src.core.schemas import SupervisorResponse, DocaResponse, TransporteResponse
+    from src.core.schemas import DocaResponse, SupervisorResponse, TransporteResponse
 
 
 class AgendamentoResponse(Base):
-
     supervisor_id: int | None
     doca_id: int
     transporte_id: int
@@ -33,9 +32,9 @@ class AgendamentoResponse(Base):
     supervisor: SupervisorResponse | None = None
     doca: DocaResponse | None = None
     transporte: TransporteResponse | None = None
-    
-class AgendamentoCreate(Base):
 
+
+class AgendamentoCreate(Base):
     supervisor_id: int | None = Field(None, gt=0)
     doca_id: int = Field(..., gt=0)
     transporte_id: int = Field(..., gt=0)
@@ -47,9 +46,9 @@ class AgendamentoCreate(Base):
     status: StatusAgendamento = StatusAgendamento.PENDENTE
 
     observacoes: str | None = None
-    
-class AgendamentoUpdate(Base):
 
+
+class AgendamentoUpdate(Base):
     supervisor_id: int | None = Field(None, gt=0)
     doca_id: int | None = Field(None, gt=0)
     transporte_id: int | None = Field(None, gt=0)

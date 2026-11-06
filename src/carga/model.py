@@ -1,12 +1,11 @@
-from datetime import datetime
 from decimal import Decimal
+from typing import TYPE_CHECKING
 
-from sqlalchemy import DateTime, Integer, Numeric, String, Text, func
+from sqlalchemy import Integer, Numeric, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.core.base_model import Base
 
-from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.core.repository import Transporte
 
@@ -24,6 +23,4 @@ class Carga(Base):
     nota_fiscal: Mapped[str | None] = mapped_column(String(50))
     observacoes: Mapped[str | None] = mapped_column(Text)
 
-    transportes: Mapped[list["Transporte"]] = relationship(
-        back_populates="carga"
-    )
+    transportes: Mapped[list["Transporte"]] = relationship(back_populates="carga")

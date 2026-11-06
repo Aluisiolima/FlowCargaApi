@@ -1,10 +1,8 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
 
 from alembic import context
-
 from src.core.base_model import Base
 from src.core.repository import *
 from src.core.settings import Settings
@@ -18,7 +16,9 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-config.set_main_option("sqlalchemy.url", Settings().DATABASE_URL.replace("asyncpg", "psycopg2"))
+config.set_main_option(
+    "sqlalchemy.url", Settings().DATABASE_URL.replace("asyncpg", "psycopg2")
+)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
@@ -70,9 +70,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

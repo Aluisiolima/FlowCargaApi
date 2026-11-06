@@ -1,22 +1,21 @@
+from datetime import datetime
+from typing import TYPE_CHECKING
+
+from pydantic import Field
+
 from src.core.base_schema import Base
 from src.core.types import StatusTransporte
 
-from pydantic import Field
-from datetime import datetime
-
-from typing import TYPE_CHECKING
-
 if TYPE_CHECKING:
     from src.core.schemas import (
-        MotoristaResponse,
+        AgendamentoResponse,
         CaminhaoResponse,
         CargaResponse,
-        AgendamentoResponse
+        MotoristaResponse,
     )
 
 
 class TransporteResponse(Base):
-
     motorista_id: int
     caminhao_id: int
     carga_id: int
@@ -34,9 +33,9 @@ class TransporteResponse(Base):
     carga: CargaResponse | None = None
 
     agendamentos: list[AgendamentoResponse] = Field(default_factory=list)
-   
-class TransporteCreate(Base):
 
+
+class TransporteCreate(Base):
     motorista_id: int = Field(..., gt=0)
     caminhao_id: int = Field(..., gt=0)
     carga_id: int = Field(..., gt=0)
@@ -50,9 +49,9 @@ class TransporteCreate(Base):
     status: StatusTransporte = StatusTransporte.SOLICITADO
 
     observacoes: str | None = Field(None, max_length=200)
-    
-class TransporteUpdate(Base):
 
+
+class TransporteUpdate(Base):
     motorista_id: int | None = Field(None, gt=0)
     caminhao_id: int | None = Field(None, gt=0)
     carga_id: int | None = Field(None, gt=0)

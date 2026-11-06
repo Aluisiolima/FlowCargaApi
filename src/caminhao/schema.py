@@ -1,16 +1,15 @@
-from src.core.base_schema import Base
+from decimal import Decimal
+from typing import TYPE_CHECKING
 
 from pydantic import Field
-from decimal import Decimal
 
-from typing import TYPE_CHECKING
+from src.core.base_schema import Base
 
 if TYPE_CHECKING:
     from src.core.schemas import TransporteResponse
 
 
 class CaminhaoResponse(Base):
-
     placa: str
     marca: str | None = None
     modelo: str | None = None
@@ -23,7 +22,6 @@ class CaminhaoResponse(Base):
 
 
 class CaminhaoCreate(Base):
-
     placa: str = Field(..., min_length=7, max_length=10)
 
     marca: str | None = Field(None, max_length=100)
@@ -31,9 +29,7 @@ class CaminhaoCreate(Base):
 
     ano_fabricacao: int | None = Field(None, gt=1900)
 
-    capacidade_kg: Decimal | None = Field(
-        None, gt=0, max_digits=12, decimal_places=2
-    )
+    capacidade_kg: Decimal | None = Field(None, gt=0, max_digits=12, decimal_places=2)
 
     tipo_veiculo: str | None = Field(None, max_length=50)
 
@@ -41,7 +37,6 @@ class CaminhaoCreate(Base):
 
 
 class CaminhaoUpdate(Base):
-
     placa: str | None = Field(None, min_length=7, max_length=10)
 
     marca: str | None = Field(None, max_length=100)
@@ -49,9 +44,7 @@ class CaminhaoUpdate(Base):
 
     ano_fabricacao: int | None = Field(None, gt=1900)
 
-    capacidade_kg: Decimal | None = Field(
-        None, gt=0, max_digits=12, decimal_places=2
-    )
+    capacidade_kg: Decimal | None = Field(None, gt=0, max_digits=12, decimal_places=2)
 
     tipo_veiculo: str | None = Field(None, max_length=50)
 
