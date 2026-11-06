@@ -1,6 +1,4 @@
-from datetime import datetime
-
-from sqlalchemy import Boolean, DateTime, Enum as SAEnum, String, func
+from sqlalchemy import Boolean, Enum as SAEnum, String, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.core.base_model import Base
