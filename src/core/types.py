@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class StatusAgendamento(str, Enum):
+class StatusAgendamento(StrEnum):
     PENDENTE = "pendente"
     CONFIRMADO = "confirmado"
     EM_ANDAMENTO = "em_andamento"
@@ -9,14 +9,14 @@ class StatusAgendamento(str, Enum):
     CANCELADO = "cancelado"
 
 
-class StatusDoca(str, Enum):
+class StatusDoca(StrEnum):
     DISPONIVEL = "disponivel"
     OCUPADA = "ocupada"
     MANUTENCAO = "manutencao"
     INATIVA = "inativa"
 
 
-class StatusTransporte(str, Enum):
+class StatusTransporte(StrEnum):
     SOLICITADO = "solicitado"
     EM_TRANSITO = "em_transito"
     AGUARDANDO_DESCARGA = "aguardando_descarga"
@@ -25,6 +25,6 @@ class StatusTransporte(str, Enum):
     CANCELADO = "cancelado"
 
 
-class TipoUsuario(str, Enum):
+class TipoUsuario(StrEnum):
     ADMINISTRADOR = "administrador"
     SUPERVISOR = "supervisor"

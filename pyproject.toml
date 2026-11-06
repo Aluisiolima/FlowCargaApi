@@ -14,3 +14,19 @@ dependencies = [
 dev = [
     "ruff>=0.17.4",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",   # Erros pycodestyle
+    "F",   # Pyflakes
+    "I",   # Ordenação de imports
+    "UP",  # Atualizações de sintaxe Python
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

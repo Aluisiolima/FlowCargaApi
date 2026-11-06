@@ -5,11 +5,6 @@ router = APIRouter()
 
 @router.get("/")
 def read_root():
-    return {"Hello": "World"}
-
-
-@router.get("/")
-def read_root():
     return {
         "app": "Flow Carga",
         "message": "Sistema de gerenciamento de transporte de cargas",
