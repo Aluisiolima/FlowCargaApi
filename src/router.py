@@ -1,6 +1,13 @@
 from fastapi import APIRouter
 
+from src.supervisor.controller import router as supervisor_router
+
 router = APIRouter()
+
+
+router = APIRouter(prefix="/api/v1")
+
+router.include_router(supervisor_router)
 
 
 @router.get("/")
