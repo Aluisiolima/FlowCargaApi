@@ -32,7 +32,11 @@ class Supervisor(Base):
     ativo: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
 
     agendamentos: Mapped[list["Agendamento"]] = relationship(
-        back_populates="supervisor"
+        back_populates="supervisor",
+        lazy="selectin",
     )
 
-    relatorios: Mapped[list["Relatorio"]] = relationship(back_populates="supervisor")
+    relatorios: Mapped[list["Relatorio"]] = relationship(
+        back_populates="supervisor",
+        lazy="selectin",
+    )
