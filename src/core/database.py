@@ -18,3 +18,7 @@ class Database:
     async def get_session(self) -> AsyncGenerator[AsyncSession, None]:
         async with self.SessionLocal() as session:
             yield session
+
+
+database = Database()
+get_session = database.get_session
