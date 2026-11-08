@@ -41,6 +41,5 @@ def exceptions(func):
             return await func(*args, **kwargs)
         except Exception as e:
             await ExceptionMessages.handle_exception(e, db)
-            
-            
+
     return wrapper
